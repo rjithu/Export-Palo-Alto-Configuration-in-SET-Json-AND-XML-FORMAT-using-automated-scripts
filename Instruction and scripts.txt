@@ -1,0 +1,34 @@
+You need to save this file with and you can run it from any Linux machine. 
+
+please change the username, password, and f/w ip as per your requirements
+
+
+
+import pexpect
+import sys
+import time
+
+fw_user = "admin"
+fw_pass = "admin"
+fw_ip = "10.x.x.x"
+prompt = "> $"
+hash = "# $"
+fw = pexpect.spawn("sshpass -p{} ssh -o StrictHostKeyChecking=no {}@{}".format(fw_pass, fw_user, fw_ip))
+fw.logfile = open("config.log", "a")
+fw.expect(prompt)
+fw.sendline("set cli pager off")
+fw.expect(prompt)
+fw.sendline("show clock")
+fw.sendline("set cli config-output-format set")
+fw.expect(prompt)
+fw.sendline("configure")
+fw.expect(hash)
+fw.sendline("show")
+fw.expect(hash)
+fw.sendline("exit")
+fw.expect(prompt)
+fw.sendline("set cli config-output-format default")
+fw.sendline("exit")
+
+
+In the above code I have shown how to export in set format, you can modify the code to use set cli config-output-format <set, Jason or XML > instead.
