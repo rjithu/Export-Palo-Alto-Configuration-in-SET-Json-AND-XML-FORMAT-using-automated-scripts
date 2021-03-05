@@ -1,7 +1,6 @@
-You need to save this file with and you can run it from any Linux machine. 
+You need to save this file with "filename.py" and you can run it from any Linux machine. 
 
 please change the username, password, and f/w ip as per your requirements
-
 
 
 import pexpect
@@ -31,4 +30,4 @@ fw.sendline("set cli config-output-format default")
 fw.sendline("exit")
 
 
-In the above code I have shown how to export in set format, you can modify the code to use set cli config-output-format <set, Jason or XML > instead.
+In the above code I have shown how to export in set format, you can modify the code to use "set cli config-output-format <set, Jason or XML > instead.
